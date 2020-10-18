@@ -7,6 +7,9 @@
 // Import Botkit's core features
 const { Botkit } = require('botkit');
 const { BotkitCMSHelper } = require('botkit-plugin-cms');
+const { ShowTypingMiddleware } = require('botbuilder');
+// const botkitTypingMiddleware = require('botkit-middleware-typing');
+
 
 // Import a platform-specific adapter for web.
 
@@ -36,6 +39,8 @@ const controller = new Botkit({
     storage
 });
 
+
+
 if (process.env.CMS_URI) {
     controller.usePlugin(new BotkitCMSHelper({
         uri: process.env.CMS_URI,
@@ -43,16 +48,25 @@ if (process.env.CMS_URI) {
     }));
 }
 
+// controller.adapter.use(new ShowTypingMiddleware());
+
 // Once the bot has booted up its internal services, you can use them to do stuff.
 controller.ready(() => {
 
-    controller.middleware.receive.use((bot, message, next) => {
-        console.log("IN > ", message.text);
-        bot.reply(message, { type: "typing" });
-        setTimeout(async () => {
-        next();
-        }, 1000);
-    });
+    // controller.middleware.receive.use((bot, message, next) => {
+    //     console.log("IN > ", message.text);
+    //     bot.reply(message, { type: "typing" });
+    //     setTimeout(async () => {
+    //     next();
+    //     }, 1000);
+    // });
+
+    
+
+    // const typingMiddleware = botkitTypingMiddleware({
+    //     maximumTypingDelayMs: 3000,
+    // });
+    // controller.middleware.send.use(typingMiddleware);
 
     // load traditional developer-created local custom feature modules
     controller.loadModules(__dirname + '/features');
