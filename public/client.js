@@ -386,6 +386,11 @@ var Botkit = {
 
         that.on('sent', function () {
             // do something after sending
+            // console.log('typing...')
+            // that.clearReplies();
+            // that.renderMessage({
+            //     isTyping: true
+            // });
         });
 
         that.on('message', function (message) {
