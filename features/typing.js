@@ -12,14 +12,15 @@ module.exports = function(controller) {
     typing.addAction('typing');
 
     // start the typing indicator
-    typing.addMessage({type: 'typing'}, 'typing');
+    // typing.addMessage({type: 'typing'}, 'typing');
     // trigger a gotoThread, which gives us an opportunity to delay the next message
     typing.addAction('next_thread','typing');
 
     typing.addMessage('typed!','next_thread');
 
     // use the before handler to delay the next message 
-    typing.before('next_thread',  async () => {
+    typing.before('next_thread',  async (convo, bot) => {
+        await bot.say({type: 'typing'}, 'typing')
         return new Promise((resolve) => {
             // simulate some long running process
             setTimeout(resolve, 3000);

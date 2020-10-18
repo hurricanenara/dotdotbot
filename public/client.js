@@ -377,6 +377,7 @@ var Botkit = {
         });
 
         that.on('typing', function () {
+            console.log('typing...')
             that.clearReplies();
             that.renderMessage({
                 isTyping: true
