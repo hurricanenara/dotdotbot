@@ -14,7 +14,7 @@ module.exports = function(controller) {
         });
 
         controller.on('welcome_back', async(bot, message) => {
-            await bot.reply(message, "welcome back!")
+            await bot.reply(message, "welcome back to Nara's Channel!")
         });
 
         controller.hears(new RegExp('quick'), 'message', async (bot, message) => {

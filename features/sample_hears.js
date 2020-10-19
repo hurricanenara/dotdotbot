@@ -19,4 +19,18 @@ module.exports = function(controller) {
         await bot.reply(message,{ text: 'I HEARD ALL CAPS!' });
     });
 
+    controller.hears('typing1','message', async function(bot, message) {
+        await bot.reply(message,{
+        text: 'This message used the automatic typing delay',
+        typing: true,
+        });
+    });
+
+    controller.hears('typing2','message', async function(bot, message) {
+        await bot.reply(message,{
+        text: 'This message specified a 4000ms typing delay',
+        typingDelay: 4000,
+        });
+    });
+    
 }
