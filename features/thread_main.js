@@ -82,14 +82,17 @@ module.exports = function(controller) {
     // convo.addAction('default','typing');
 
     // convo.addMessage('typed!','default');
-    convo.before('default', async(convo, bot) => {
-        await bot.say("I was called before default")
-        // await bot.say({type: 'typing'})
+    convo.before('default', async(convo, bot, next) => {
+        await bot.say("I was called before default");
+        setTimeout(async() => {
+            await bot.say({type: 'typing'})
+        }, 500)
         convo.setVar('counter', 0);
         return new Promise((resolve) => {
-            setTimeout(resolve, 800);
+            setTimeout(resolve, 1300);
         })
     });
+    convo.say('This is the default thread.');
     // convo.addAction('typing');
 
     // // start the typing indicator
@@ -99,8 +102,7 @@ module.exports = function(controller) {
     
     convo.addAction('next_thread')
     convo.addMessage(`Ask me something or type 'help'`, 'next_thread');
-    convo.addAction('next_thread')
-    convo.addMessage(`hello hello`, 'next_thread');
+    // convo.addMessage({typing: true})
 
     convo.before('next_thread', async(convo, bot) => {
         setTimeout(async() => {
