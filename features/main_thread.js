@@ -46,7 +46,8 @@ module.exports = function(controller) {
                 console.log('YES HANDLER');
                 console.log(convo);
                 await bot.say(`You said help`);
-                return await convo.gotoThread('main_thread_qr_intro');
+                // return await convo.gotoThread('main_thread_qr_intro');
+                return await bot.beginDialog('main_thread_qr');
             }
         },
         {
@@ -59,10 +60,11 @@ module.exports = function(controller) {
         }
     ], {key: 'answer'});
 
-    mainMenu.addMessage('Choose from below to learn more about me:', 'main_thread_qr_intro');
-    mainMenu.after(async(restuls, bot) => {
-        await bot.beginDialog('dynamic_attachments');
-    })
+    
+    // mainMenu.addMessage('Choose from below to learn more about me:', 'main_thread_qr_intro');
+    // mainMenu.after(async(restuls, bot) => {
+    //     await bot.beginDialog('dynamic_attachments');
+    // })
 
     // mainMenu.before('main_thread_qr', async(convo, bot) => {
     //     mainMenu.ask(`Ask me something of say 'help'`, async(response, convo, bot, full_message) => {

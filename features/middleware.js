@@ -24,10 +24,10 @@ module.exports = function(controller) {
     //     console.log('OUT > ', message.text, message.channelData && message.channelData.quick_replies ? message.channelData.quick_replies : null, message.channelData && message.channelData.attachments ? message.channelData.attachments : null);
     //     // console.log(message)
     //     await bot.reply(message, { type: "typing" });
-        setTimeout(async () => {
+        // setTimeout(async () => {
     //         await bot.changeContext(message.reference);
-            await next();
-        }, 500);
+            // await next();
+        // }, 500);
     //     // next();
     // });
     controller.middleware.send.use((bot, message, next) => {
