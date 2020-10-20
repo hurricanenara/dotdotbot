@@ -2,7 +2,7 @@
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Licensed under the MIT License.
  */
-const masterArrayFunc = require('./master');
+const masterArrayFunc = require('./thread_bank/master');
 const masterArray = masterArrayFunc();
 // const masterArray = [
 //     {
@@ -1085,5 +1085,10 @@ module.exports = function(controller) {
         return new Promise(resolve => {
             setTimeout(resolve, 1000);
         });
+    });
+
+    controller.hears(["help"], ['message'], async (bot, message) => {
+        const main_thread = masterArray[1]['script']['collect']['options'];
+        
     });
 }
