@@ -4,7 +4,7 @@ const mainQRFunc = require('./thread_bank/quick_replies');
 
 module.exports = function(controller) {
 
-    let aboutMenu = new BotkitConversation('about', controller);
+    let experienceMenu = new BotkitConversation('experience', controller);
     
         async function typingIndicator(bot) {
             setTimeout(async() => {
@@ -12,29 +12,30 @@ module.exports = function(controller) {
             }, 1000)
         }
 
-    controller.addDialog(aboutMenu);
+    controller.addDialog(experienceMenu);
 
-    aboutMenu.before('default', async(convo, bot) => {
+    experienceMenu.before('default', async(convo, bot) => {
         setTimeout(async() => {
             await bot.say({type: 'typing'}, 'main_thread');
         }, 800)
-        // await bot.say(`I'm Nara! I recently graduated from App Academy and I live in New York.`);
-        // typingIndicator(bot);
         return new Promise(resolve => {
             setTimeout(resolve, 1600);
         }).catch(err => console.log(err))
     });
 
-    aboutMenu.say(`I'm Nara! I recently graduated from App Academy and I live in New York.`);
-    aboutMenu.addAction('second')
+    experienceMenu.say(`I have 4 years of experience as an analyst and handful of engineering internships.`);
+    experienceMenu.addAction('second')
 
-    aboutMenu.before('second', async(convo, bot) => {
+    experienceMenu.before('second', async(convo, bot) => {
         await bot.say({type: 'typing'}, 'main_thread');
         return new Promise(resolve => {
-            setTimeout(resolve, 1000);
+            setTimeout(resolve, 2000);
         }).catch(err => console.log(err))
     });
-
-    aboutMenu.addMessage(`Ask me more or say 'main' to go back to the main menu`, 'second')
+    experienceMenu.addAction('second');
+    // experienceMenu.addMessage(`Choose from below to learn more about my experience:`, 'second')
+    experienceMenu.after(async(results, bot) => {
+        await bot.beginDialog('experience_sub_qr')
+    })
     //can add
 };

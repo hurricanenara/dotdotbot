@@ -28,6 +28,33 @@ module.exports =  function quickReplies(type) {
                         payload: 'contact',
                     }
                 ];
+        case "experience":
+            return [
+                    {
+                        title: 'Scorpio USA LLC',
+                        payload: 'scorpio',
+                    },
+                    {
+                        title: 'SDSM&T',
+                        payload: 'sdsmt',
+                    },
+                    {
+                        title: 'BD',
+                        payload: 'bd',
+                    },
+                    {
+                        title: 'Samsung C&T',
+                        payload: 'samsung',
+                    },
+                    {
+                        title: 'Hanwha E&C',
+                        payload: 'hanwha',
+                    },
+                    {
+                        title: 'back',
+                        payload: 'back',
+                    }
+                ];
         default:
             break;
     }
