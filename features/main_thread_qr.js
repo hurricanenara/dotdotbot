@@ -27,6 +27,8 @@ module.exports = function(controller) {
         }).catch(err => console.log(err))
     });
 
+    // console.log(controller, "THIS IS CONTROLLER");
+
     mainThreadQR.ask({
         text: 'Choose from below to learn more about me:',
         quick_replies: async(line, vars) => {

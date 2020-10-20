@@ -1087,8 +1087,14 @@ module.exports = function(controller) {
         });
     });
 
+    controller.hears(['main', 'main menu', 'beginning'], ['message'], async (bot, message) => {
+        await bot.beginDialog('main_thread_qr');
+        return new Promise(resolve => {
+            setTimeout(resolve, 600);
+        });
+    });
+
     controller.hears(["help"], ['message'], async (bot, message) => {
         const main_thread = masterArray[1]['script']['collect']['options'];
-        
     });
 }
