@@ -53,6 +53,34 @@ module.exports = function(controller) {
         }
     ], {key: 'answer'});
 
-    mainMenu.addMessage('this is main thread qr','main_thread_qr');
+    mainMenu.addMessage({
+        text: 'Choose from below to learn more about me:',
+        quick_replies: [
+                    {
+                        title: 'About',
+                        payload: 'about',
+                    },
+                    {
+                        title: 'Education',
+                        payload: 'education',
+                    },
+                    {
+                        title: 'Experience',
+                        payload: 'experience',
+                    },
+                    {
+                        title: 'Fun Facts',
+                        payload: 'fun_facts',
+                    },
+                    {
+                        title: 'Tech Stack',
+                        payload: 'tech_stack',
+                    },
+                    {
+                        title: 'Contact',
+                        payload: 'contact',
+                    }
+                ]
+    }, 'main_thread_qr')
     mainMenu.addMessage('NOOOOOO', 'bar');
 }
