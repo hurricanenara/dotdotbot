@@ -2,7 +2,8 @@
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Licensed under the MIT License.
  */
-let masterArray = require('./master');
+const masterArrayFunc = require('./master');
+const masterArray = masterArrayFunc();
 // const masterArray = [
 //     {
 //         "command": "hello",
@@ -1075,8 +1076,8 @@ module.exports = function(controller) {
         });
     });
     
-    controller.hears('hello', ['message'], async (bot, message) => {
-        const greetings = masterArray()[0]['script'][0]['script'][0]['text'];
+    controller.hears(['hello', 'hi', 'yo'], ['message'], async (bot, message) => {
+        const greetings = masterArray[0]['script'][0]['script'][0]['text'];
         console.log(greetings);
         const rand = Math.floor(Math.random() * greetings.length)
         await bot.reply(message, greetings[rand]);

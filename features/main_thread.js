@@ -1,4 +1,6 @@
 const { BotkitConversation } = require("botkit");
+const masterArrayFunc = require('./master');
+const masterArray = masterArrayFunc();
 
 module.exports = function(controller) {
     let main = new BotkitConversation('main_thread', controller);
