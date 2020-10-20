@@ -55,6 +55,8 @@ module.exports =  function quickReplies(type) {
                         payload: 'back',
                     }
                 ];
+        case 'fun':
+            return [`I lived in four different countries`, `I ate an entire watermelon in one day once`, `I want to learn Chinese!`, `I used to live in South Dakota`]
         default:
             break;
     }

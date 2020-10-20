@@ -8,7 +8,7 @@ module.exports = function(controller) {
     
         async function typingIndicator(bot) {
             setTimeout(async() => {
-                await bot.say({type: 'typing'}, 'main_thread');
+                await bot.say({type: 'typing'}, 'education');
             }, 1000)
         }
 
@@ -16,7 +16,7 @@ module.exports = function(controller) {
 
     educationMenu.before('default', async(convo, bot) => {
         setTimeout(async() => {
-            await bot.say({type: 'typing'}, 'main_thread');
+            await bot.say({type: 'typing'}, 'education');
         }, 800)
         return new Promise(resolve => {
             setTimeout(resolve, 1600);
@@ -24,15 +24,19 @@ module.exports = function(controller) {
     });
 
     educationMenu.say(`I have a B.S. from South Dakota School of Mines. My background is in Industrial Engineering and Human Factors.`);
-    educationMenu.addAction('second')
 
     educationMenu.before('second', async(convo, bot) => {
-        await bot.say({type: 'typing'}, 'main_thread');
+        await bot.say({type: 'typing'}, 'education');
         return new Promise(resolve => {
-            setTimeout(resolve, 2000);
+            setTimeout(resolve, 3000);
         }).catch(err => console.log(err))
     });
 
-    educationMenu.addMessage(`Ask me more or say 'main' to go back to the main menu`, 'second')
+    educationMenu.addAction('second');
+    educationMenu.addMessage(`Oh, and I just graduated from App Academy in August where I learned JavaScript, Ruby, and cool frameworks!`, 'second');
+    // educationMenu.addMessage(`Choose from below to learn more about my experience:`, 'second')
+    educationMenu.after(async(results, bot) => {
+        await bot.beginDialog('experience_sub_qr')
+    })
     //can add
 };
