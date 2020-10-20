@@ -51,6 +51,41 @@ module.exports = function(controller) {
             }
         },
         {
+            pattern: 'about',
+            handler: async function(answer, convo, bot) {
+                // return await convo.gotoThread('main_thread_qr_intro');
+                return await bot.beginDialog('about');
+            }
+        },
+        {
+            pattern: 'experience',
+            handler: async function(answer, convo, bot) {
+                // return await convo.gotoThread('main_thread_qr_intro');
+                return await bot.beginDialog('experience');
+            }
+        },
+        {
+            pattern: 'education',
+            handler: async function(answer, convo, bot) {
+                // return await convo.gotoThread('main_thread_qr_intro');
+                return await bot.beginDialog('education');
+            }
+        },
+        {
+            pattern: 'tech stack',
+            handler: async function(answer, convo, bot) {
+                // return await convo.gotoThread('main_thread_qr_intro');
+                return await bot.beginDialog('tech_stack');
+            }
+        },
+        {
+            pattern: 'contact',
+            handler: async function(answer, convo, bot) {
+                // return await convo.gotoThread('main_thread_qr_intro');
+                return await bot.beginDialog('contact');
+            }
+        },
+        {
             default: true,
             handler: async (answer, convo, bot) => {
                 console.log('FALLBACK HANDLER');
