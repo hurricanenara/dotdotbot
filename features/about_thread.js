@@ -26,4 +26,15 @@ module.exports = function(controller) {
     });
 
     aboutMenu.say(`I'm Nara! I recently graduated from App Academy and I live in New York.`);
+    aboutMenu.addAction('second')
+
+    aboutMenu.before('second', async(convo, bot) => {
+        await bot.say({type: 'typing'}, 'main_thread');
+        return new Promise(resolve => {
+            setTimeout(resolve, 1000);
+        }).catch(err => console.log(err))
+    });
+
+    aboutMenu.addMessage('Ask me more:', 'second')
+    //can add
 };
