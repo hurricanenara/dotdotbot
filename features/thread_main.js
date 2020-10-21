@@ -20,7 +20,7 @@ module.exports = function(controller) {
         convo.setVar('count', 0);
         return new Promise(resolve => {
             setTimeout(resolve, 2000);
-        }).catch(err => console.log(err))
+        });
     });
 
     convo.say('This is the default thread.');
@@ -52,7 +52,7 @@ module.exports = function(controller) {
         // }
         return new Promise(resolve => {
             setTimeout(resolve, 2000);
-        }).catch(err => console.log(err))
+        });
     });
     // convo.addMessage({type: 'typing'});
     // convo.addAction('second')
@@ -74,7 +74,7 @@ module.exports = function(controller) {
         await bot.say({type: 'typing'}, 'test_convo');
         return new Promise(resolve => {
             setTimeout(resolve, 2000);
-        }).catch(err => console.log(err))
+        });
     });
 
     convo.addMessage('This is third','third');
@@ -85,7 +85,7 @@ module.exports = function(controller) {
         await convo.gotoThread('fourth');
         return new Promise(resolve => {
             setTimeout(resolve, 2000);
-        }).catch(err => console.log(err))
+        });
     }, 'think', 'third');
 
     // convo.before('fourth', async(convo, bot) => {

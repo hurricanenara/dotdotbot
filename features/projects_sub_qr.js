@@ -1,8 +1,6 @@
 const { BotkitConversation } = require('botkit');
-const masterArrayFunc = require('./thread_bank/master');
-const QRFunc = require('./thread_bank/quick_replies');
-
-const projectsQR = QRFunc('projects');
+const projectsQR = require('./thread_bank/quick_replies')('projects');
+const startTyping = require('./thread_bank/typingIndicator');
 
 module.exports = function(controller) {
     let first = "Ask me any of the below questions!";
@@ -13,20 +11,7 @@ module.exports = function(controller) {
 
     controller.addDialog(projectsSubQR);
 
-    async function typingIndicator(bot) {
-        setTimeout(async() => {
-            await bot.say({type: 'typing'}, 'projects_sub_qr');
-        }, 1000)
-    }
-
-    projectsSubQR.before('default', async(convo, bot) => {
-        await bot.say({type: 'typing'}, 'main_thread');
-        return new Promise(resolve => {
-            setTimeout(resolve, 800);
-        }).catch(err => console.log(err))
-    });
-
-    // console.log(controller, "THIS IS CONTROLLER");
+    startTyping(projectsSubQR);
 
     projectsSubQR.ask({
         text: quest,
@@ -49,22 +34,15 @@ module.exports = function(controller) {
 
     controller.addDialog(quiche);
 
-    quiche.before('default', async(convo, bot) => {
-        await bot.say({type: 'typing'}, 'quiche');
-        return new Promise(resolve => {
-            setTimeout(resolve, 2000);
-        }).catch(err => console.log(err))
-    });
+    startTyping(quiche);
 
     quiche.addMessage(`Quiche is a fullstack project, a clone of Robinhood (online securities trading site). I used Ruby/Rails, PostgreSQL JavaScript/React/Redux.`)
     quiche.addAction('second')
-    quiche.before('second', async(convo, bot) => {
-        await bot.say({type: 'typing'}, 'quiche');
-        return new Promise(resolve => {
-            setTimeout(resolve, 3000);
-        }).catch(err => console.log(err))
-    });
+
+    startTyping(quiche, 'second', 1500)
+
     quiche.addMessage(`You can check it out at <https://quichelite.herokuapp.com/#/>`, 'second');
+
     quiche.after(async(results, bot) => {
         await bot.say({type: 'typing'}, 'quiche');
         await bot.beginDialog('projects_sub_qr');
@@ -75,22 +53,15 @@ module.exports = function(controller) {
 
     controller.addDialog(oil);
 
-    oil.before('default', async(convo, bot) => {
-        await bot.say({type: 'typing'}, 'oil');
-        return new Promise(resolve => {
-            setTimeout(resolve, 2000);
-        }).catch(err => console.log(err))
-    });
+    startTyping(oil);
 
-    oil.addMessage(``)
+    oil.addMessage(`Oil is a single-page data visualization and an interactive map create with JavaScript and d3.js.`)
     oil.addAction('second')
-    oil.before('second', async(convo, bot) => {
-        await bot.say({type: 'typing'}, 'oil');
-        return new Promise(resolve => {
-            setTimeout(resolve, 3000);
-        }).catch(err => console.log(err))
-    });
-    oil.addMessage(``, 'second');
+
+    startTyping(oil, 'second', 1500)
+
+    oil.addMessage(`You can check it out at <https://hurricanenara.github.io/oil/>`, 'second');
+
     oil.after(async(results, bot) => {
         await bot.say({type: 'typing'}, 'oil');
         await bot.beginDialog('projects_sub_qr');
@@ -101,22 +72,14 @@ module.exports = function(controller) {
 
     controller.addDialog(rps);
 
-    rps.before('default', async(convo, bot) => {
-        await bot.say({type: 'typing'}, 'rps');
-        return new Promise(resolve => {
-            setTimeout(resolve, 2000);
-        }).catch(err => console.log(err))
-    });
+    startTyping(rps);
 
-    rps.addMessage(``)
+    rps.addMessage(`RPS is a real-time two-player rock paper scissors game created with MongoDB, Express, React, and Node (MERN) + Socket.io.`)
     rps.addAction('second')
-    rps.before('second', async(convo, bot) => {
-        await bot.say({type: 'typing'}, 'rps');
-        return new Promise(resolve => {
-            setTimeout(resolve, 3000);
-        }).catch(err => console.log(err))
-    });
-    rps.addMessage(``, 'second');
+
+    startTyping(rps, 'second', 1500)
+    
+    rps.addMessage(`Check it out here: <https://hurricanenara.github.io/oil/>`, 'second');
     rps.after(async(results, bot) => {
         await bot.say({type: 'typing'}, 'rps');
         await bot.beginDialog('projects_sub_qr');

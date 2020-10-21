@@ -1,11 +1,11 @@
 const { BotkitConversation } = require("botkit");
-const masterArrayFunc = require('./thread_bank/master');
-const funFunc = require('./thread_bank/quick_replies');
+
+const funArr = require('./thread_bank/quick_replies')('fun'); //currying
 
 module.exports = function(controller) {
     
     let ffMenu = new BotkitConversation('fun_facts', controller);
-    const funArr = funFunc('fun');
+    // const funArr = funFunc('fun');
     const randIdx = () => Math.floor(Math.random() * funArr.length);
     controller.addDialog(ffMenu);
     
@@ -15,7 +15,7 @@ module.exports = function(controller) {
         convo.setVar('random', funArr[0]);
         convo.setVar('count', 0);
         return new Promise(resolve => {
-        setTimeout(resolve, 1400);
+            setTimeout(resolve, 1400);
         })
     });
 
@@ -68,49 +68,4 @@ module.exports = function(controller) {
         await bot.say('BEFORE FIFTH!!!');
     });
     ffMenu.addMessage('this is the fifth thread','fifth');
-
-    // ffMenu.addQuestion('Want to hear more fun facts?', [
-    //     {
-    //         pattern: 'cool',
-    //         handler: async function(answer, convo, bot) {
-    //             console.log('YES HANDLER');
-    //             console.log(convo);
-    //             await bot.say('Thanks!');
-    //             await convo.gotoThread('second');
-    //         }
-    //     },
-    //     {
-    //         default: true,
-    //         handler: async (answer, convo, bot) => {
-    //             console.log('FALLBACK HANDLER');
-    //             await convo.repeat();
-    //             // do nothing
-    //         }
-    //     }
-    // ], {key: 'answer'}, 'third');
-
-    // fun_factsMenu.before('third', async(convo, bot) => {
-        
-    //     await bot.say('before third!');
-    //     return new Promise(resolve => {
-    //         setTimeout(resolve, 2000);
-    //     }).catch(err => console.log(err))
-    // });
-
-    
-
-    
-
-    // fun_factsMenu.say(`I've lived in four different countries`);
-    // fun_factsMenu.addAction('second')
-
-    // fun_factsMenu.before('second', async(convo, bot) => {
-    //     await bot.say({type: 'typing'}, 'fun_facts');
-    //     return new Promise(resolve => {
-    //         setTimeout(resolve, 1000);
-    //     }).catch(err => console.log(err))
-    // });
-
-    // fun_factsMenu.addMessage(`Ask me more or say 'main' to go back to the main menu`, 'second')
-    //can add
 };

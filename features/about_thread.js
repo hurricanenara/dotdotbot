@@ -1,45 +1,26 @@
 const { BotkitConversation } = require("botkit");
-const masterArrayFunc = require('./thread_bank/master');
-const mainQRFunc = require('./thread_bank/quick_replies');
+const startTyping = require('./thread_bank/typingIndicator');
+const resume = require('./thread_bank/resume.json');
 
 module.exports = function(controller) {
 
     let aboutMenu = new BotkitConversation('about', controller);
-    
-        async function typingIndicator(bot) {
-            setTimeout(async() => {
-                await bot.say({type: 'typing'}, 'main_thread');
-            }, 1000)
-        }
+    const { name, residence, background } = resume.about;
+    const { college, major, bootcamp } = resume.education;
 
     controller.addDialog(aboutMenu);
 
-    aboutMenu.before('default', async(convo, bot) => {
-        setTimeout(async() => {
-            await bot.say({type: 'typing'}, 'main_thread');
-        }, 800)
-        // await bot.say(`I'm Nara! I recently graduated from App Academy and I live in New York.`);
-        // typingIndicator(bot);
-        return new Promise(resolve => {
-            setTimeout(resolve, 1600);
-        }).catch(err => console.log(err))
-    });
+    startTyping(aboutMenu);
 
-    aboutMenu.say(`I'm Nara! I recently graduated from App Academy and I live in New York.`);
+    aboutMenu.say(`I'm ${name}, and I'm a software engineer. I recently graduated from ${bootcamp} and I live in ${residence}.`);
     aboutMenu.addAction('second')
 
-    aboutMenu.before('second', async(convo, bot) => {
-        await bot.say({type: 'typing'}, 'main_thread');
-        return new Promise(resolve => {
-            setTimeout(resolve, 1000);
-        }).catch(err => console.log(err))
-    });
+    startTyping(aboutMenu, 'second', 1500);
 
     aboutMenu.addAction('second');
-    aboutMenu.addMessage(`Oh, and I just graduated from App Academy in August where I learned JavaScript, Ruby, and cool frameworks!`, 'second');
-    // aboutMenu.addMessage(`Choose from below to learn more about my experience:`, 'second')
+    aboutMenu.addMessage(`I also have a background in ${background.toLowerCase()} and I'm open to work.`, 'second');
+    
     aboutMenu.after(async(results, bot) => {
         await bot.beginDialog('about_sub_qr')
     })
-    //can add
 };

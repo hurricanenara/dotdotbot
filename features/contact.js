@@ -5,12 +5,6 @@ const mainQRFunc = require('./thread_bank/quick_replies');
 module.exports = function(controller) {
 
     let aboutMenu = new BotkitConversation('about', controller);
-    
-        async function typingIndicator(bot) {
-            setTimeout(async() => {
-                await bot.say({type: 'typing'}, 'main_thread');
-            }, 1000)
-        }
 
     controller.addDialog(aboutMenu);
 
@@ -22,7 +16,7 @@ module.exports = function(controller) {
         // typingIndicator(bot);
         return new Promise(resolve => {
             setTimeout(resolve, 1600);
-        }).catch(err => console.log(err))
+        });
     });
 
     aboutMenu.say(`I'm Nara! I recently graduated from App Academy and I live in New York.`);
@@ -32,7 +26,7 @@ module.exports = function(controller) {
         await bot.say({type: 'typing'}, 'main_thread');
         return new Promise(resolve => {
             setTimeout(resolve, 1000);
-        }).catch(err => console.log(err))
+        });
     });
 
     aboutMenu.addMessage(`Ask me more or say 'main' to go back to the main menu`, 'second')

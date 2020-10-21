@@ -1,0 +1,66 @@
+{
+    "about": {
+        "name": "Nara",
+        "residence": "New York",
+        "background": "Engineering"
+    },
+    "education": {
+        "college": "South Dakota School of Mines",
+        "major": "B.S. in Industrial Engineering",
+        "bootcamp": "App Academy"
+    },
+    "experience": [
+        {   
+            "id": 0,
+            "company": {
+                "name": "Scorpio USA LLC",
+                "title": "Associate",
+                "duration": "Sept 2015 - Sept 2019",
+                "description": "",
+                "promos": ""
+            }
+        },
+        {   
+            "id": 1,
+            "company": {
+                "name": "School of Mines",
+                "title": "Tutor",
+                "duration": "Apr 2013 - May 2015",
+                "description": "",
+                "promos": ""
+            }
+        },
+        {   
+            "id": 3,
+            "company": {
+                "name": "BD",
+                "title": "Quality/EHS Intern",
+                "duration": "May 2014 - Aug 2014",
+                "description": "",
+                "promos": ""
+            }
+        },
+        {   
+            "id": 4,
+            "company": {
+                "name": "Samsung C&T",
+                "title": "IT Infrastructure Intern",
+                "duration": "Jun 2010 - Jul 2010",
+                "description": "",
+                "promos": ""
+            }
+        }
+    ],
+    "funFacts": {
+
+    },
+    "techStack": {
+
+    },
+    "projects": {
+
+    },
+    "contact": {
+
+    }
+}

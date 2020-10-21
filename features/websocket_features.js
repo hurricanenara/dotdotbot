@@ -2,19 +2,22 @@
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Licensed under the MIT License.
  */
-const { BotkitConversation } = require("botkit");
+const resume = require('./thread_bank/resume.json');
+
 module.exports = function(controller) {
+
+    const { name } = resume.about;
 
     if (controller.adapter.name === 'Web Adapter') {
 
         console.log('Loading sample web features...');
 
         controller.on('hello', async(bot, message) => {
-            await bot.reply(message, "your first visit, hello!")
+            await bot.reply(message, `Welcome to my channel! My name is ${name}. Greet me! `)
         });
 
         controller.on('welcome_back', async(bot, message) => {
-            await bot.reply(message, "welcome back to Nara's Channel!")
+            await bot.reply(message, `welcome back to ${name}'s Channel!`)
         });
 
         controller.hears(new RegExp('quick'), 'message', async (bot, message) => {
