@@ -1,34 +1,19 @@
 const { BotkitConversation } = require("botkit");
-const masterArrayFunc = require('./thread_bank/master');
-const mainQRFunc = require('./thread_bank/quick_replies');
+const resume = require('./thread_bank/resume.json');
+const startTyping = require('./thread_bank/typingIndicator');
 
 module.exports = function(controller) {
 
-    let aboutMenu = new BotkitConversation('about', controller);
+    let contact = new BotkitConversation('contact', controller);
 
-    controller.addDialog(aboutMenu);
+    controller.addDialog(contact);
 
-    aboutMenu.before('default', async(convo, bot) => {
-        setTimeout(async() => {
-            await bot.say({type: 'typing'}, 'main_thread');
-        }, 800)
-        // await bot.say(`I'm Nara! I recently graduated from App Academy and I live in New York.`);
-        // typingIndicator(bot);
-        return new Promise(resolve => {
-            setTimeout(resolve, 1600);
-        });
-    });
+    startTyping(contact);
 
-    aboutMenu.say(`I'm Nara! I recently graduated from App Academy and I live in New York.`);
-    aboutMenu.addAction('second')
+    contact.say(`I'm Nara! I recently graduated from App Academy and I live in New York.`);
+    contact.addAction('second');
 
-    aboutMenu.before('second', async(convo, bot) => {
-        await bot.say({type: 'typing'}, 'main_thread');
-        return new Promise(resolve => {
-            setTimeout(resolve, 1000);
-        });
-    });
+    startTyping(contact, 'second', 1500);
 
-    aboutMenu.addMessage(`Ask me more or say 'main' to go back to the main menu`, 'second')
-    //can add
+    contact.addMessage(`Ask me more or say 'main' to go back to the main menu`, 'second')
 };

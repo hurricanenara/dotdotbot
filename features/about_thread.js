@@ -1,14 +1,16 @@
 const { BotkitConversation } = require("botkit");
-const startTyping = require('./thread_bank/typingIndicator');
 const resume = require('./thread_bank/resume.json');
+const startTyping = require('./thread_bank/typingIndicator');
 
 module.exports = function(controller) {
 
     let aboutMenu = new BotkitConversation('about', controller);
+    
+    controller.addDialog(aboutMenu);
+
     const { name, residence, background } = resume.about;
     const { college, major, bootcamp } = resume.education;
 
-    controller.addDialog(aboutMenu);
 
     startTyping(aboutMenu);
 
@@ -19,7 +21,7 @@ module.exports = function(controller) {
 
     aboutMenu.addAction('second');
     aboutMenu.addMessage(`I also have a background in ${background.toLowerCase()} and I'm open to work.`, 'second');
-    
+    // aboutMenu.addMessage(`Choose from below to learn more about my experience:`, 'second')
     aboutMenu.after(async(results, bot) => {
         await bot.beginDialog('about_sub_qr')
     })
