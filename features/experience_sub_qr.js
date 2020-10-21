@@ -32,7 +32,7 @@ module.exports = function(controller) {
         }}, [], 'choice');
 
     expSubQR.after(async(results, bot) => {
-        await bot.say(`you said ${results.choice}`);
+        await bot.say(`You said ${results.choice}`);
         console.log(results);
         if (results.choice !== 'back') {
             await bot.beginDialog(results.choice)

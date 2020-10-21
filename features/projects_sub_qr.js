@@ -35,7 +35,7 @@ module.exports = function(controller) {
         }}, [], 'choice');
 
     projectsSubQR.after(async(results, bot) => {
-        await bot.say(`you said ${results.choice}`);
+        await bot.say(`You said ${results.choice}`);
         console.log(results);
         if (results.choice !== 'back') {
             await bot.beginDialog(results.choice)
@@ -44,81 +44,81 @@ module.exports = function(controller) {
         }
     });
 
-    // first_line thread/convo
-    let first_line = new BotkitConversation('first_line', controller);
+    // quiche thread/convo
+    let quiche = new BotkitConversation('quiche', controller);
 
-    controller.addDialog(first_line);
+    controller.addDialog(quiche);
 
-    first_line.before('default', async(convo, bot) => {
-        await bot.say({type: 'typing'}, 'first_line');
+    quiche.before('default', async(convo, bot) => {
+        await bot.say({type: 'typing'}, 'quiche');
         return new Promise(resolve => {
             setTimeout(resolve, 2000);
         }).catch(err => console.log(err))
     });
 
-    first_line.addMessage(`It was in 6th grade when I wrote my first line! I immediately shot to the moon as I watched my code render on the browser.`)
-    first_line.addAction('second')
-    first_line.before('second', async(convo, bot) => {
-        await bot.say({type: 'typing'}, 'first_line');
+    quiche.addMessage(`Quiche is a fullstack project, a clone of Robinhood (online securities trading site). I used Ruby/Rails, PostgreSQL JavaScript/React/Redux.`)
+    quiche.addAction('second')
+    quiche.before('second', async(convo, bot) => {
+        await bot.say({type: 'typing'}, 'quiche');
         return new Promise(resolve => {
             setTimeout(resolve, 3000);
         }).catch(err => console.log(err))
     });
-    // first_line.addMessage(``, 'second');
-    first_line.after(async(results, bot) => {
-        await bot.say({type: 'typing'}, 'first_line');
+    quiche.addMessage(`You can check it out at <https://quichelite.herokuapp.com/#/>`, 'second');
+    quiche.after(async(results, bot) => {
+        await bot.say({type: 'typing'}, 'quiche');
         await bot.beginDialog('projects_sub_qr');
     })
 
-    // fave_game thread/convo
-    let fave_game = new BotkitConversation('fave_game', controller);
+    // oil thread/convo
+    let oil = new BotkitConversation('oil', controller);
 
-    controller.addDialog(fave_game);
+    controller.addDialog(oil);
 
-    fave_game.before('default', async(convo, bot) => {
-        await bot.say({type: 'typing'}, 'fave_game');
+    oil.before('default', async(convo, bot) => {
+        await bot.say({type: 'typing'}, 'oil');
         return new Promise(resolve => {
             setTimeout(resolve, 2000);
         }).catch(err => console.log(err))
     });
 
-    fave_game.addMessage(`I grew up playing a variety of online role playing/strategy games like Age of Empires, Starcraft, Pokemon etc. I especially love AOE.`)
-    fave_game.addAction('second')
-    fave_game.before('second', async(convo, bot) => {
-        await bot.say({type: 'typing'}, 'fave_game');
+    oil.addMessage(``)
+    oil.addAction('second')
+    oil.before('second', async(convo, bot) => {
+        await bot.say({type: 'typing'}, 'oil');
         return new Promise(resolve => {
             setTimeout(resolve, 3000);
         }).catch(err => console.log(err))
     });
-    fave_game.addMessage(`I recently picked up Minecraft, it's pretty cool.`, 'second');
-    fave_game.after(async(results, bot) => {
-        await bot.say({type: 'typing'}, 'fave_game');
+    oil.addMessage(``, 'second');
+    oil.after(async(results, bot) => {
+        await bot.say({type: 'typing'}, 'oil');
         await bot.beginDialog('projects_sub_qr');
     });
 
-    // hobbies thread/convo
-    let hobbies = new BotkitConversation('hobbies', controller);
+    // rps thread/convo
+    let rps = new BotkitConversation('rps', controller);
 
-    controller.addDialog(hobbies);
+    controller.addDialog(rps);
 
-    hobbies.before('default', async(convo, bot) => {
-        await bot.say({type: 'typing'}, 'hobbies');
+    rps.before('default', async(convo, bot) => {
+        await bot.say({type: 'typing'}, 'rps');
         return new Promise(resolve => {
             setTimeout(resolve, 2000);
         }).catch(err => console.log(err))
     });
 
-    hobbies.addMessage(`Thinking projects becomming a billionaire.`)
-    hobbies.addAction('second')
-    hobbies.before('second', async(convo, bot) => {
-        await bot.say({type: 'typing'}, 'hobbies');
+    rps.addMessage(``)
+    rps.addAction('second')
+    rps.before('second', async(convo, bot) => {
+        await bot.say({type: 'typing'}, 'rps');
         return new Promise(resolve => {
             setTimeout(resolve, 3000);
         }).catch(err => console.log(err))
     });
-    hobbies.addMessage(`In all seriousness, apart from programming and learning new things, I like driving, helping others with their code, and exploring NYC.`, 'second');
-    hobbies.after(async(results, bot) => {
-        await bot.say({type: 'typing'}, 'hobbies');
+    rps.addMessage(``, 'second');
+    rps.after(async(results, bot) => {
+        await bot.say({type: 'typing'}, 'rps');
         await bot.beginDialog('projects_sub_qr');
     });
 }

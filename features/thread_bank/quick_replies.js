@@ -98,16 +98,16 @@ module.exports =  function quickReplies(type) {
         case 'projects':
             return [
                     {
-                        title: 'First Line of code',
-                        payload: 'first_line',
+                        title: 'Quiche (Robinhood Clone)',
+                        payload: 'quiche',
                     },
                     {
-                        title: 'Favorite Game',
-                        payload: 'fave_game',
+                        title: 'Oil (d3.js)',
+                        payload: 'oil',
                     },
                     {
-                        title: 'Hobbies',
-                        payload: 'hobbies',
+                        title: 'RPSkill (MERN)',
+                        payload: 'rps',
                     },
                     {
                         title: 'back',
