@@ -57,6 +57,21 @@ module.exports =  function quickReplies(type) {
                 ];
         case 'fun':
             return [`I lived in four different countries`, `I ate an entire watermelon in one day once`, `I want to learn Chinese!`, `I used to live in South Dakota`]
+        case 'edu':
+            return [
+                    {
+                        title: 'What is Industrial Engineering?',
+                        payload: 'whatisIE',
+                    },
+                    {
+                        title: 'What are your academic goals?',
+                        payload: 'academic_goals',
+                    },
+                    {
+                        title: 'back',
+                        payload: 'back',
+                    }
+                ]
         default:
             break;
     }

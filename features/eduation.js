@@ -36,7 +36,7 @@ module.exports = function(controller) {
     educationMenu.addMessage(`Oh, and I just graduated from App Academy in August where I learned JavaScript, Ruby, and cool frameworks!`, 'second');
     // educationMenu.addMessage(`Choose from below to learn more about my experience:`, 'second')
     educationMenu.after(async(results, bot) => {
-        await bot.beginDialog('experience_sub_qr')
+        await bot.beginDialog('education_sub_qr')
     })
     //can add
 };
