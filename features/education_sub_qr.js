@@ -61,7 +61,7 @@ module.exports = function(controller) {
             setTimeout(resolve, 3000);
         }).catch(err => console.log(err))
     });
-    // whatisIE.addMessage(`I worked as an analyst (09/2015 - 09/2019), monitoring the oil and shipping markets, analyzing cargo and ship movement data using advanced Excel, macros, and VBA`, 'second');
+    // whatisIE.addMessage(``, 'second');
     whatisIE.after(async(results, bot) => {
         await bot.say({type: 'typing'}, 'whatisIE');
         await bot.beginDialog('education_sub_qr');

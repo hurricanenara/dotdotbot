@@ -24,6 +24,10 @@ module.exports =  function quickReplies(type) {
                         payload: 'tech_stack',
                     },
                     {
+                        title: 'Projects',
+                        payload: 'projects',
+                    },
+                    {
                         title: 'Contact',
                         payload: 'contact',
                     }
@@ -66,6 +70,44 @@ module.exports =  function quickReplies(type) {
                     {
                         title: 'What are your academic goals?',
                         payload: 'academic_goals',
+                    },
+                    {
+                        title: 'back',
+                        payload: 'back',
+                    }
+                ]
+        case 'about':
+            return [
+                    {
+                        title: 'First Line of code',
+                        payload: 'first_line',
+                    },
+                    {
+                        title: 'Favorite Game',
+                        payload: 'fave_game',
+                    },
+                    {
+                        title: 'Hobbies',
+                        payload: 'hobbies',
+                    },
+                    {
+                        title: 'back',
+                        payload: 'back',
+                    }
+                ]
+        case 'projects':
+            return [
+                    {
+                        title: 'First Line of code',
+                        payload: 'first_line',
+                    },
+                    {
+                        title: 'Favorite Game',
+                        payload: 'fave_game',
+                    },
+                    {
+                        title: 'Hobbies',
+                        payload: 'hobbies',
                     },
                     {
                         title: 'back',
