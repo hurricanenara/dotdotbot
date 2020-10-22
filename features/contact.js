@@ -19,7 +19,7 @@ module.exports = function(controller) {
         {
             pattern: new RegExp(/(end|quit|bye)/),
             handler: async function(res, convo, bot) {
-                await bot.say(`Thanks for stopping by!`);
+                await bot.say(`Thanks for stopping by! Good bye!`);
                 return await bot.cancelAllDialogs();
             }
         },
@@ -27,7 +27,7 @@ module.exports = function(controller) {
             pattern: new RegExp(/(continue|more)/),
             handler: async function(res, convo, bot) {
                 // await bot.say(`You want to know about my work history`);
-                return await bot.beginDialog('main_thread');
+                return await bot.beginDialog('main_thread_repeat');
             }
         }], 'decision', 'second');
 };

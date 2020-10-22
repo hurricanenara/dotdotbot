@@ -22,7 +22,7 @@ module.exports = function(controller) {
         if (results.choice !== 'back') {
             await bot.beginDialog(results.choice)
         } else {
-            await bot.beginDialog('main_thread_qr')
+            await bot.beginDialog('main_thread_qr_repeat')
         }
     });
 
@@ -84,7 +84,7 @@ module.exports = function(controller) {
     bd.addMessage(`I managed and performed various statistical analysis on production performance. I also conducted the annual hearing conservation program to assure workers' health and safety (per OSHA guidelines).`, 'second');
     bd.after(async(results, bot) => {
         await bot.say({type: 'typing'}, 'bd');
-        await bot.beginDialog('experience_sub_qr');
+        await bot.beginDialog('experience');
     });
 
     // Samsung thread/convo
@@ -119,6 +119,6 @@ module.exports = function(controller) {
     hanwha.addMessage(`I researched and reviewed some of Hanwha's biggest ISO standards that are used to keep engieering and construction sites safe and organized.`, 'second');
     hanwha.after(async(results, bot) => {
         await bot.say({type: 'typing'}, 'hanwha');
-        await bot.beginDialog('experience_sub_qr');
+        await bot.beginDialog('experience');
     });
 }

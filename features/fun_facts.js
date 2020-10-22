@@ -38,7 +38,7 @@ module.exports = function(controller) {
         setTimeout(resolve, 1400);
         })
     });
-    ffMenu.addMessage(`{{vars.random}} count: {{vars.count}}`, 'second');
+    ffMenu.addMessage(`{{vars.random}}`, 'second');
     ffMenu.addAction('second','second');
 
     ffMenu.before('third', async(convo, bot) => {
@@ -49,23 +49,99 @@ module.exports = function(controller) {
     });
 
     ffMenu.addMessage(`{{vars.random}}`,'third');
-    ffMenu.addQuestion('What do you think', async(response, convo, bot) => {
-        await bot.say(`You said ${response}`);
-        await convo.gotoThread('fourth');
-    }, 'think', 'third');
+    ffMenu.addMessage({type: 'typing'}, 'third');
 
-    ffMenu.before('fourth', async(convo, bot) => {
-        await bot.say('BEFORE FOURTH!!!');
-    });
-    ffMenu.addMessage('this is the fourth thread', 'fourth');
-    ffMenu.addQuestion('Will this work?', [], 'work', 'fourth');
+    ffMenu.addQuestion(`What else would you like to know?`, [
+        {
+            pattern: new RegExp(/(help?|hint|hmm|idk)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`You said help`);
+                return await bot.beginDialog('experience_sub_qr');
+            }
+        },
+        {
+            pattern: new RegExp(/(work|history|experiences?)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`You want to know about my work history`);
+                return await bot.beginDialog('experience');
+            }
+        },
+        {
+            pattern: new RegExp(/(educationa?l?|academics|majors?|background)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`You want to learn about my academic background`);
+                return await bot.beginDialog('education');
+            }
+        },
+        {
+            pattern: new RegExp(/(languages?|tech|stack)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`You want to learn about my tech stack`);
+                return await bot.beginDialog('techStack');
+            }
+        },
+        {
+            pattern: new RegExp(/(facts)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`Again? Sure :)`);
+                return await bot.beginDialog('fun_facts');
+            }
+        },
+        {
+            pattern: new RegExp(/(who)/),
+            handler: async function(res, convo, bot) {
+                // await bot.say(`Gotcha.`);
+                return await bot.beginDialog('about');
+            }
+        },
+        {
+            pattern: new RegExp(/(tell|yourself)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`Sure!`);
+                return await bot.beginDialog('about');
+            }
+        },
+        {
+            pattern: new RegExp(/(who)/),
+            handler: async function(res, convo, bot) {
+                // await bot.say(`Gotcha.`);
+                return await bot.beginDialog('about');
+            }
+        },
+        {
+            pattern: new RegExp(/(contact|email|git|github|linkedin)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`One moment...`);
+                return await bot.beginDialog('contact');
+            }
+        },
+        {
+            default: true,
+            handler: async (res, convo, bot) => {
+                await bot.say(`Sorry, I don't understand`);
+                return await convo.repeat();
+            }
+        }
+    ], 'res', 'third');
 
-    ffMenu.onChange('work', async(response, convo, bot) => {
-        await convo.gotoThread('fifth');
-    });
 
-    ffMenu.before('fifth', async(convo, bot) => {
-        await bot.say('BEFORE FIFTH!!!');
-    });
-    ffMenu.addMessage('this is the fifth thread','fifth');
+    // ffMenu.addQuestion('What do you think', async(response, convo, bot) => {
+    //     await bot.say(`You said ${response}`);
+    //     await convo.gotoThread('fourth');
+    // }, 'think', 'third');
+
+    // ffMenu.before('fourth', async(convo, bot) => {
+    //     await bot.say('BEFORE FOURTH!!!');
+    // });
+    // ffMenu.addMessage('this is the fourth thread', 'fourth');
+    // ffMenu.addQuestion('Will this work?', [], 'work', 'fourth');
+
+    // ffMenu.onChange('work', async(response, convo, bot) => {
+    //     await convo.gotoThread('fifth');
+    // });
+
+    // ffMenu.before('fifth', async(convo, bot) => {
+    //     await bot.say('BEFORE FIFTH!!!');
+    // });
+    // ffMenu.addMessage('this is the fifth thread','fifth');
 };

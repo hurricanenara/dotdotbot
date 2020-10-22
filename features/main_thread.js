@@ -32,6 +32,20 @@ module.exports = function(controller) {
             }
         },
         {
+            pattern: new RegExp(/(facts)/),
+            handler: async function(res, convo, bot) {
+                // await bot.say(`Gotcha.`);
+                return await bot.beginDialog('fun_facts');
+            }
+        },
+        {
+            pattern: new RegExp(/(who)/),
+            handler: async function(res, convo, bot) {
+                // await bot.say(`Gotcha.`);
+                return await bot.beginDialog('about');
+            }
+        },
+        {
             pattern: new RegExp(/(languages?|tech|stack)/),
             handler: async function(res, convo, bot) {
                 await bot.say(`You want to learn about my tech stack`);
@@ -41,15 +55,22 @@ module.exports = function(controller) {
         {
             pattern: new RegExp(/(tell|yourself|who)/),
             handler: async function(res, convo, bot) {
-                await bot.say(`Gotcha.`);
+                await bot.say(`Okay. Here goes...`);
                 return await bot.beginDialog('about');
             }
         },
         {
-            pattern: new RegExp(/(contact|email|(git)?(hub)?|linkedin)/),
+            pattern: new RegExp(/(contact|email|git|github|linkedin)/),
             handler: async function(res, convo, bot) {
                 await bot.say(`One moment...`);
                 return await bot.beginDialog('contact');
+            }
+        },
+        {
+            pattern: new RegExp(/(projects?|portfolio)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`You want to know more about my projects, no problem.`);
+                return await bot.beginDialog('projects');
             }
         },
         {

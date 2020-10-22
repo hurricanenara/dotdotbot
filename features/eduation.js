@@ -15,10 +15,74 @@ module.exports = function(controller) {
     startTyping(educationMenu, 'second', 1500)
 
     educationMenu.addAction('second');
-    educationMenu.addMessage(`Oh, and I just graduated from App Academy in August where I learned JavaScript, Ruby, and cool frameworks!`, 'second');
+    educationMenu.ask(`What else would you like to know?`, [
+        {
+            pattern: new RegExp(/(help?|hint|hmm|idk)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`You said help`);
+                return await bot.beginDialog('education_sub_qr');
+            }
+        },
+        {
+            pattern: new RegExp(/(work|history|experiences?)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`You want to know about my work history`);
+                return await bot.beginDialog('experience');
+            }
+        },
+        {
+            pattern: new RegExp(/(educationa?l?|academics|majors?|background|school)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`I can repeat`);
+                return await bot.beginDialog('education');
+            }
+        },
+        {
+            pattern: new RegExp(/(languages?|tech|stack)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`You're curious about my tech stack`);
+                return await bot.beginDialog('techStack');
+            }
+        },
+        {
+            pattern: new RegExp(/(tell|yourself)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`Gotcha.`);
+                return await bot.beginDialog('about');
+            }
+        },
+        {
+            pattern: new RegExp(/(facts)/),
+            handler: async function(res, convo, bot) {
+                // await bot.say(`Gotcha.`);
+                return await bot.beginDialog('fun_facts');
+            }
+        },
+        {
+            pattern: new RegExp(/(who)/),
+            handler: async function(res, convo, bot) {
+                // await bot.say(`Gotcha.`);
+                return await bot.beginDialog('about');
+            }
+        },
+        {
+            pattern: new RegExp(/(contact|email|git|github|linkedin)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`One moment...`);
+                return await bot.beginDialog('contact');
+            }
+        },
+        {
+            default: true,
+            handler: async (res, convo, bot) => {
+                await bot.say(`Sorry, I don't understand`);
+                return await convo.repeat();
+            }
+        }
+    ], 'res', 'second');
     // educationMenu.addMessage(`Choose from below to learn more about my experience:`, 'second')
-    educationMenu.after(async(results, bot) => {
-        await bot.beginDialog('education_sub_qr')
-    })
+    // educationMenu.after(async(results, bot) => {
+    //     await bot.beginDialog('education_sub_qr')
+    // })
     //can add
 };

@@ -24,7 +24,7 @@ module.exports = function(controller) {
         if (results.choice !== 'back') {
             await bot.beginDialog(results.choice)
         } else {
-            await bot.beginDialog('main_thread_qr')
+            await bot.beginDialog('main_thread_qr_repeat')
         }
     });
 
@@ -81,6 +81,6 @@ module.exports = function(controller) {
     rps.addMessage(`Check it out here: <https://hurricanenara.github.io/oil/>`, 'second');
     rps.after(async(results, bot) => {
         await bot.say({type: 'typing'}, 'rps');
-        await bot.beginDialog('projects_sub_qr');
+        await bot.beginDialog('projects');
     });
 }

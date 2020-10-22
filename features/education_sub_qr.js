@@ -11,7 +11,7 @@ module.exports = function(controller) {
     startTyping(eduSubQR);
 
     eduSubQR.addQuestion({
-        text: 'Ask me any of the below questions!',
+        text: 'Ask me any of the below follow-up questions!',
         quick_replies: async(line, vars) => {
             return eduQR
         }}, [], 'choice', 'default');
@@ -60,7 +60,7 @@ module.exports = function(controller) {
         if (results.choice !== 'back') {
             await bot.beginDialog(results.choice)
         } else {
-            await bot.beginDialog('main_thread_qr')
+            await bot.beginDialog('main_thread_qr_repeat')
         }
     });
 
