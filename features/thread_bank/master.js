@@ -22,7 +22,6 @@ module.exports = function masterArray() {
                             "G`day human!",
                             "Ciao!",
                             "Hola!",
-                            "Annyong Haseyo!",
                         ],
                         "collect": null
                     },
