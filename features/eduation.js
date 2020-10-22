@@ -17,7 +17,7 @@ module.exports = function(controller) {
     educationMenu.addAction('second');
     educationMenu.ask(`What else can I help you with?`, [
         {
-            pattern: new RegExp(/(help?|hint|hmm|idk)/),
+            pattern: new RegExp(/(help?|hint|hmm|idk|^[t|T]ell me more)/),
             handler: async function(res, convo, bot) {
                 await bot.say(`Let me assist`);
                 return await bot.beginDialog('education_sub_qr');
@@ -94,7 +94,7 @@ module.exports = function(controller) {
         {
             pattern: new RegExp(/(resume)/),
             handler: async function(res, convo, bot) {
-                await bot.say(` <a href="https://drive.google.com/file/d/1_2cHoazI1LB68rk5k40v-GGUEUKqY-t0/view">Here</a> you go!`);
+                await bot.say(`Here's my resume...<br> <a href="https://drive.google.com/file/d/1_2cHoazI1LB68rk5k40v-GGUEUKqY-t0/view target="_blank" >here</a> you go!`);
                 return await bot.beginDialog('main_thread_repeat');
             }
         },

@@ -123,6 +123,13 @@ module.exports = function(controller) {
             }
         },
         {
+            pattern: new RegExp(/(resume)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`Here's my resume...<br> <a href="https://drive.google.com/file/d/1_2cHoazI1LB68rk5k40v-GGUEUKqY-t0/view target="_blank" >here</a> you go!`);
+                return await bot.beginDialog('main_thread_repeat');
+            }
+        },
+        {
             default: true,
             handler: async (res, convo, bot) => {
                 await bot.say(`Sorry, I don't understand`);
