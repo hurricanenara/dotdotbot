@@ -5,7 +5,6 @@ module.exports = function(controller) {
         setTimeout(async () => {
         next();
         }, 800);
-        // next();
     });
 
     // async function middlewareTest(bot, message, next) {

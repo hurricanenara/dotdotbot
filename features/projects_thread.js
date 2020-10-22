@@ -17,7 +17,7 @@ module.exports = function(controller) {
     projectsMenu.addAction('second');
     projectsMenu.ask(`What else would you like to know?`, [
         {
-            pattern: new RegExp(/(help?|hint|hmm|idk|they|show|prove)/),
+            pattern: new RegExp(/(help?|hint|hmm|idk|they|show|prove|see them\?*)/),
             handler: async function(res, convo, bot) {
                 await bot.say(`Here they are:`);
                 return await bot.beginDialog('projects_sub_qr');
