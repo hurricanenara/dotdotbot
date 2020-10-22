@@ -24,9 +24,9 @@ module.exports = function(controller) {
 
     aboutMenu.ask(`What else can I help you with?`, [
         {
-            pattern: new RegExp(/(help?|hint|hmm|idk|they|show|prove)/),
+            pattern: new RegExp(/(help?|hint|hmm|idk)/),
             handler: async function(res, convo, bot) {
-                await bot.say(`Here they are:`);
+                await bot.say(`Let me help!`);
                 return await bot.beginDialog('about_sub_qr');
             }
         },

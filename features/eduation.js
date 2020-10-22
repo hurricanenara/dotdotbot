@@ -15,11 +15,11 @@ module.exports = function(controller) {
     startTyping(educationMenu, 'second', 1500)
 
     educationMenu.addAction('second');
-    educationMenu.ask(`What else would you like to know?`, [
+    educationMenu.ask(`What else can I help you with?`, [
         {
             pattern: new RegExp(/(help?|hint|hmm|idk)/),
             handler: async function(res, convo, bot) {
-                await bot.say(`You said help`);
+                await bot.say(`Let me assist`);
                 return await bot.beginDialog('education_sub_qr');
             }
         },
@@ -40,14 +40,21 @@ module.exports = function(controller) {
         {
             pattern: new RegExp(/(languages?|tech|stack)/),
             handler: async function(res, convo, bot) {
-                await bot.say(`You're curious about my tech stack`);
+                await bot.say(`You want to learn about my tech stack`);
                 return await bot.beginDialog('techStack');
             }
         },
         {
-            pattern: new RegExp(/(tell|yourself)/),
+            pattern: new RegExp(/(^tell me about yourself$|^tell me$)/),
             handler: async function(res, convo, bot) {
-                await bot.say(`Gotcha.`);
+                await bot.say(`I just did :)`);
+                return await convo.repeat();
+            }
+        },
+        {
+            pattern: new RegExp(/(^tell me again$)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`Okay, sure`);
                 return await bot.beginDialog('about');
             }
         },
@@ -63,6 +70,13 @@ module.exports = function(controller) {
             handler: async function(res, convo, bot) {
                 // await bot.say(`Gotcha.`);
                 return await bot.beginDialog('about');
+            }
+        },
+        {
+            pattern: new RegExp(/(projects?|portfolio)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`Tech stack comin' up`);
+                return await bot.beginDialog('techStack');
             }
         },
         {

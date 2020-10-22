@@ -17,10 +17,10 @@ module.exports = function(controller) {
 
     techStack.ask(`What else can I answer for you?`, [
         {
-            pattern: new RegExp(/(help?|hint|hmm|idk|they|show|prove)/),
+            pattern: new RegExp(/(help?|hint|hmm|idk)/),
             handler: async function(res, convo, bot) {
                 await bot.say(`Here they are:`);
-                return await bot.beginDialog('projects_sub_qr');
+                return await bot.beginDialog('main_thread_qr');
             }
         },
         {

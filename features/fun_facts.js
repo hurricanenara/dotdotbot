@@ -55,7 +55,7 @@ module.exports = function(controller) {
         {
             pattern: new RegExp(/(help?|hint|hmm|idk)/),
             handler: async function(res, convo, bot) {
-                await bot.say(`You said help`);
+                await bot.say(`If you need help...`);
                 return await bot.beginDialog('experience_sub_qr');
             }
         },

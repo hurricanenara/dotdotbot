@@ -15,23 +15,23 @@ module.exports = function(controller) {
     startTyping(experienceMenu, 'second', 1500);
 
     experienceMenu.addAction('second');
-    experienceMenu.addQuestion(`Feel free to ask more questions`, [
+    experienceMenu.ask(`Okay, what else would you like to learn about me?`, [
         {
             pattern: new RegExp(/(help?|hint|hmm|idk)/),
             handler: async function(res, convo, bot) {
-                await bot.say(`I can help out`);
+                await bot.say(`I can help`);
                 return await bot.beginDialog('experience_sub_qr');
             }
         },
         {
             pattern: new RegExp(/(work|history|experiences?)/),
             handler: async function(res, convo, bot) {
-                await bot.say(`Let me repeat`);
+                await bot.say(`Let me repeat that for you`);
                 return await bot.beginDialog('experience');
             }
         },
         {
-            pattern: new RegExp(/(educationa?l?|academics|majors?|background)/),
+            pattern: new RegExp(/(educationa?l?|academics|majors?|background|school)/),
             handler: async function(res, convo, bot) {
                 await bot.say(`You want to learn about my academic background`);
                 return await bot.beginDialog('education');
@@ -42,6 +42,20 @@ module.exports = function(controller) {
             handler: async function(res, convo, bot) {
                 await bot.say(`You want to learn about my tech stack`);
                 return await bot.beginDialog('techStack');
+            }
+        },
+        {
+            pattern: new RegExp(/(^tell me about yourself$|^tell me$)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`I just did :)`);
+                return await convo.repeat();
+            }
+        },
+        {
+            pattern: new RegExp(/(^tell me again$)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`Okay, sure`);
+                return await bot.beginDialog('about');
             }
         },
         {
@@ -59,17 +73,10 @@ module.exports = function(controller) {
             }
         },
         {
-            pattern: new RegExp(/(tell|yourself)/),
+            pattern: new RegExp(/(projects?|portfolio)/),
             handler: async function(res, convo, bot) {
-                await bot.say(`Sure!`);
-                return await bot.beginDialog('about');
-            }
-        },
-        {
-            pattern: new RegExp(/(who)/),
-            handler: async function(res, convo, bot) {
-                // await bot.say(`Gotcha.`);
-                return await bot.beginDialog('about');
+                await bot.say(`Tech stack comin' up`);
+                return await bot.beginDialog('techStack');
             }
         },
         {
