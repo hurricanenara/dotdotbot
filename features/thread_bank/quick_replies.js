@@ -114,6 +114,25 @@ module.exports =  function quickReplies(type) {
                         payload: 'back',
                     }
                 ]
+        case 'contact':
+            return [
+                    {
+                        title: 'LinkedIn',
+                        payload: 'linkedin',
+                    },
+                    {
+                        title: 'Github',
+                        payload: 'gh',
+                    },
+                    {
+                        title: 'Email',
+                        payload: 'email',
+                    },
+                    {
+                        title: 'back',
+                        payload: 'back',
+                    }
+                ]
         default:
             break;
     }

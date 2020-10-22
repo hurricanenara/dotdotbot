@@ -11,18 +11,18 @@ module.exports = function masterArray() {
                     {
                         "text": [
                             "Hello Human!",
+                            "Hey!",
                             "How do you do?",
+                            "Hey there!",
                             "Nice to meet you Human.",
                             "Hi!",
                             "How’s it going?",
-                            "Hey!",
-                            "Hey there!",
                             "Howdy!",
-                            "G`day human!",
                             "Salut!",
+                            "G`day human!",
                             "Ciao!",
                             "Hola!",
-                            "Shalom!"
+                            "Annyong Haseyo!",
                         ],
                         "collect": null
                     },

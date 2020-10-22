@@ -58,6 +58,22 @@ module.exports = function(controller) {
         const main_thread = masterArray[1]['script']['collect']['options'];
     });
 
-    // controller.hears('boo!', ['message'], async (bot, message) => await globalThis.alert('Happy Halloween!'));
 
+    // controller.hears(async(message) => {
+    //     let messageArr = message.split(' ');
+        
+    // }, ['message'], async(bot, message) => {
+
+    // });
+
+    // controller.hears('boo!', ['message'], async (bot, message) => await globalThis.alert('Happy Halloween!'));
+    controller.hears(['school', 'education', 'major'],'message', async (bot, message) => {
+        await bot.reply(message, 'you want to learn about my education history.')
+
+    });
+
+    controller.hears(new RegExp(/(open|interview)/),'message', async (bot, message) => {
+        await bot.reply(message, `Yes! I'm looking to join a team of ambitious individuals where I can contribute and learn.`);
+        
+    });
 }

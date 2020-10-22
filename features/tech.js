@@ -4,16 +4,16 @@ const startTyping = require('./thread_bank/typingIndicator');
 
 module.exports = function(controller) {
 
-    let aboutMenu = new BotkitConversation('about', controller);
+    let techStack = new BotkitConversation('techStack', controller);
 
-    controller.addDialog(aboutMenu);
+    controller.addDialog(techStack);
 
-    startTyping(aboutMenu);
+    startTyping(techStack);
 
-    aboutMenu.say(`I'm Nara! I recently graduated from App Academy and I live in New York.`);
-    aboutMenu.addAction('second')
+    techStack.say(`I'm proficient in Ruby/Rails, JavaScript, and SQL`);
+    techStack.addAction('second')
 
-    startTyping(aboutMenu, 'second', 1500);
+    startTyping(techStack, 'second', 1500);
 
-    aboutMenu.addMessage(`Ask me more or say 'main' to go back to the main menu`, 'second')
+    techStack.addMessage(`and I'm currently learning Python and C++`, 'second')
 };

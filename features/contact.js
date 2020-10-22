@@ -10,10 +10,26 @@ module.exports = function(controller) {
 
     startTyping(contact);
 
-    contact.say(`I'm Nara! I recently graduated from App Academy and I live in New York.`);
+    contact.say(`You can reach me via the below methods of contact: ${`<br><br>`} LinkedIn: ${`<https://www.linkedin.com/in/naraskim/><br>`} Github: <https://github.com/hurricanenara><br> Email: naralee0124@gmail.com`);
     contact.addAction('second');
 
-    startTyping(contact, 'second', 1500);
+    startTyping(contact, 'second', 800)
 
-    contact.addMessage(`Ask me more or say 'main' to go back to the main menu`, 'second')
+    contact.addQuestion('You can end this chat by saying end or say continue to go back to the main menu', [
+        {
+            pattern: new RegExp(/(end|quit|bye)/),
+            handler: async function(res, convo, bot) {
+                console.log(convo);
+                await bot.say(`Thanks for stopping by!`);
+                return await bot.cancelAllDialogs();
+            }
+        },
+        {
+            pattern: new RegExp(/(continue|more)/),
+            handler: async function(res, convo, bot) {
+                console.log(convo);
+                // await bot.say(`You want to know about my work history`);
+                return await bot.beginDialog('main_thread_qr');
+            }
+        }], 'decision', 'second');
 };

@@ -11,8 +11,6 @@ module.exports = function(controller) {
 
     startTyping(expSubQR);
 
-    // console.log(controller, "THIS IS CONTROLLER");
-
     expSubQR.ask({
         text: 'Choose an experience from below to learn more:',
         quick_replies: async(line, vars) => {

@@ -10,11 +10,53 @@ module.exports = function(controller) {
 
     startTyping(eduSubQR);
 
-    eduSubQR.ask({
+    eduSubQR.addQuestion({
         text: 'Ask me any of the below questions!',
         quick_replies: async(line, vars) => {
             return eduQR
-        }}, [], 'choice');
+        }}, [], 'choice', 'default');
+
+    eduSubQR.before('second', async(convo, bot) => {
+            await bot.say({type: 'typing'});
+        return new Promise(resolve => {
+            setTimeout(resolve, 1000);
+        });
+    })
+
+    eduSubQR.addAction('second');
+
+    // eduSubQR.addQuestion('Or you can ask whatever you want', [
+    //     {
+    //         pattern: 'help',
+    //         handler: async function(res, convo, bot) {
+    //             console.log(convo);
+    //             await bot.say(`You said help`);
+    //             return await bot.beginDialog('main_thread_qr');
+    //         }
+    //     },
+    //     {
+    //         pattern: 'work' || 'history',
+    //         handler: async function(res, convo, bot) {
+    //             console.log(convo);
+    //             await bot.say(`You said work history`);
+    //             return await bot.beginDialog('experience');
+    //         }
+    //     },
+    //     // {
+    //     //     pattern: 'school' || 'education' || 'major',
+    //     //     handler: async function(res, convo, bot) {
+    //     //         console.log(convo);
+    //     //         await bot.say(`You want to learn about my academic background`);
+    //     //         return await bot.beginDialog('education');
+    //     //     }
+    //     // },
+    //     {
+    //         default: true,
+    //         handler: async (res, convo, bot) => {
+    //             await convo.repeat();
+    //         }
+    //     }
+    // ], 'more_qs', 'second');
 
     eduSubQR.after(async(results, bot) => {
         await bot.say(`You said ${results.choice}`);
