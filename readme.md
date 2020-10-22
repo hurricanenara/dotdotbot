@@ -28,6 +28,7 @@ contact.addQuestion('You can end this chat by saying end or say continue to go b
 
 ### Instruction
 Once a user enters the creator's chat channel, dotdotbot will greet the user. The user can greet dotdotbot back to trigger the bot to standby for commands and questions.
+![Chat Demo](public/assets/narasbotDemo.gif)
 
 ### Commands
 Try asking questions like:
@@ -35,7 +36,6 @@ Try asking questions like:
     * Tell me about yourself
       * When dotdotbot tells you about herself, ask her to tell you about herself again.
     * Who are you?
-    * What's your name?
    ##### Experience
     * Can you tell me about your experience?
     * Any work history?
