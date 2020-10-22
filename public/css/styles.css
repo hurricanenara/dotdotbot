@@ -197,7 +197,7 @@ a.button:hover {
   background: none;
   border: 0;
   cursor: pointer;
-  color: blue;
+  color: rgb(135, 10, 238);
   font-weight: bold;
 }
 #message_window form {
@@ -428,4 +428,8 @@ a.button:hover {
   cursor: pointer;
 }
 
+#messenger_input::placeholder {
+  color: gray;
+  font-size: 18px;
+}
 /*# sourceMappingURL=styles.css.map */
