@@ -78,7 +78,7 @@ module.exports = function(controller) {
 
     startTyping(rps, 'second', 1500)
 
-    rps.addMessage(`Check it out here: <https://hurricanenara.github.io/oil/>`, 'second');
+    rps.addMessage(`Check it out <a href=http://rpskill.com//>here!</a>`, 'second');
     rps.after(async(results, bot) => {
         await bot.say({type: 'typing'}, 'rps');
         await bot.beginDialog('projects');
