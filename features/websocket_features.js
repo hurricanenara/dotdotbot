@@ -15,26 +15,8 @@ module.exports = function(controller) {
         });
 
         controller.on('welcome_back', async(bot, message) => {
-            await bot.reply(message, `welcome back to ${name}'s Channel!`)
+            await bot.reply(message, `Welcome back to ${name}'s Channel! Say hi!`)
         });
-
-        controller.hears(new RegExp('quick'), 'message', async (bot, message) => {
-            await bot.reply(message,{
-                text: 'Here are some quick replies',
-                quick_replies: [
-                    {
-                        title: 'Foo',
-                        payload: 'foo',
-                    },
-                    {
-                        title: 'Bar',
-                        payload: 'bar',
-                    }
-                ]
-            });
-        });
-
-
     }
 
 }

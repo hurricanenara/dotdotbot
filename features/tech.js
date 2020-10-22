@@ -31,6 +31,13 @@ module.exports = function(controller) {
             }
         },
         {
+            pattern: new RegExp(/([a|A]re you open to work\?$)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`Yes! I'm looking to join a team of ambitious individuals where I can contribute and learn.`);
+                return await bot.beginDialog('contact');
+            }
+        },
+        {
             pattern: new RegExp(/(educationa?l?|academics|majors?|background|school)/),
             handler: async function(res, convo, bot) {
                 await bot.say(`You want to learn about my academic background`);
@@ -45,9 +52,9 @@ module.exports = function(controller) {
             }
         },
         {
-            pattern: new RegExp(/(tell|yourself)/),
+            pattern: new RegExp(/(^tell me about yourself$|^tell me$)/),
             handler: async function(res, convo, bot) {
-                await bot.say(`Gotcha.`);
+                await bot.say(`Sure thing!`);
                 return await bot.beginDialog('about');
             }
         },

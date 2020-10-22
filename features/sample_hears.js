@@ -22,25 +22,18 @@ module.exports = function(controller) {
         await bot.reply(message,{ text: 'I HEARD ALL CAPS!' });
     });
 
-    controller.hears('typing1','message', async function(bot, message) {
-        await bot.reply(message,{
-        text: 'This message used the automatic typing delay',
-        typing: true,
-        });
-    });
-
-    controller.hears('typing2','message', async function(bot, message) {
-        await bot.reply(message,{
-        text: 'This message specified a 4000ms typing delay',
-        typingDelay: 4000,
-        });
-    });
-    
-    controller.hears(['hello', 'hi', 'yo'], ['message'], async (bot, message) => {
+    controller.hears([new RegExp(/([w|W]hat\'?s up\?*|^yo$|^yoo+|hi+|hello+|howdy\!*|hey+\!*|[H|h]ow are you\?*)/)], ['message'], async (bot, message) => {
         const greetings = masterArray[0]['script'][0]['script'][0]['text'];
         const rand = Math.floor(Math.random() * greetings.length)
         await bot.reply(message, greetings[rand]);
         await bot.beginDialog('main_thread');
+        return new Promise(resolve => {
+            setTimeout(resolve, 1000);
+        });
+    });
+
+    controller.hears([new RegExp(/(are you a (bot\?*|robot\?*)|are you (human\?*|alive\?*))/)], ['message'], async (bot, message) => {
+        await bot.reply(message, `Why don't you take a wild guess or say hi to find out!`);
         return new Promise(resolve => {
             setTimeout(resolve, 1000);
         });
@@ -53,26 +46,7 @@ module.exports = function(controller) {
         });
     });
 
-    controller.hears(["help"], ['message'], async (bot, message) => {
-        const main_thread = masterArray[1]['script']['collect']['options'];
-    });
-
-
-    // controller.hears(async(message) => {
-    //     let messageArr = message.split(' ');
-        
-    // }, ['message'], async(bot, message) => {
-
-    // });
-
-    // controller.hears('boo!', ['message'], async (bot, message) => await globalThis.alert('Happy Halloween!'));
-    controller.hears(['school', 'education', 'major'],'message', async (bot, message) => {
-        await bot.reply(message, 'you want to learn about my education history.')
-
-    });
-
-    controller.hears(new RegExp(/(open|interview)/),'message', async (bot, message) => {
+    controller.hears(new RegExp(/(^are you open to work\?$)/),'message', async (bot, message) => {
         await bot.reply(message, `Yes! I'm looking to join a team of ambitious individuals where I can contribute and learn.`);
-        
     });
 }

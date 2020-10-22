@@ -22,12 +22,20 @@ module.exports = function(controller) {
 
     startTyping(aboutMenu, 'second', 1500);
 
+    
     aboutMenu.ask(`What else can I help you with?`, [
         {
             pattern: new RegExp(/(help?|hint|hmm|idk)/),
             handler: async function(res, convo, bot) {
                 await bot.say(`Let me help!`);
                 return await bot.beginDialog('about_sub_qr');
+            }
+        },
+        {
+            pattern: new RegExp(/([a|A]re you open to work\?$)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`Yes! I'm looking to join a team of ambitious individuals where I can contribute and learn.`);
+                return await bot.beginDialog('contact');
             }
         },
         {
@@ -83,7 +91,7 @@ module.exports = function(controller) {
             pattern: new RegExp(/(projects?|portfolio)/),
             handler: async function(res, convo, bot) {
                 await bot.say(`Tech stack comin' up`);
-                return await bot.beginDialog('techStack');
+                return await bot.beginDialog('projects');
             }
         },
         {

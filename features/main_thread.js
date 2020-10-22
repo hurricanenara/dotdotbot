@@ -53,7 +53,7 @@ module.exports = function(controller) {
             }
         },
         {
-            pattern: new RegExp(/(tell|yourself|who)/),
+            pattern: new RegExp(/(tell|yourself)/),
             handler: async function(res, convo, bot) {
                 await bot.say(`Okay. Here goes...`);
                 return await bot.beginDialog('about');
@@ -78,6 +78,13 @@ module.exports = function(controller) {
             handler: async function(res, convo, bot) {
                 await bot.say(`Fetching resume...<br> <a href="https://drive.google.com/file/d/1_2cHoazI1LB68rk5k40v-GGUEUKqY-t0/view">here</a> you go!`);
                 return await bot.beginDialog('main_thread_repeat');
+            }
+        },
+        {
+            pattern: new RegExp(/([a|A]re you open to work\?$)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`Yes! I'm looking to join a team of ambitious individuals where I can contribute and learn.`);
+                return await bot.beginDialog('contact');
             }
         },
         {
