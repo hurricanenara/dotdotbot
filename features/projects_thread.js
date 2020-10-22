@@ -75,8 +75,15 @@ module.exports = function(controller) {
         {
             pattern: new RegExp(/(contact|email|git|github|linkedin)/),
             handler: async function(res, convo, bot) {
-                await bot.say(`One moment...`);
+                await bot.say(`One second...`);
                 return await bot.beginDialog('contact');
+            }
+        },
+        {
+            pattern: new RegExp(/(resume)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`Fetching resume...<br> <a href="https://drive.google.com/file/d/1_2cHoazI1LB68rk5k40v-GGUEUKqY-t0/view">here</a> you go!`);
+                return await bot.beginDialog('main_thread_repeat');
             }
         },
         {

@@ -47,8 +47,8 @@ module.exports = function(controller) {
         {
             pattern: new RegExp(/(^tell me about yourself$|^tell me$)/),
             handler: async function(res, convo, bot) {
-                await bot.say(`I just did :)`);
-                return await convo.repeat();
+                await bot.say(`Sure!`);
+                return await bot.beginDialog('about');
             }
         },
         {
@@ -84,6 +84,13 @@ module.exports = function(controller) {
             handler: async function(res, convo, bot) {
                 await bot.say(`One moment...`);
                 return await bot.beginDialog('contact');
+            }
+        },
+        {
+            pattern: new RegExp(/(resume)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(` <a href="https://drive.google.com/file/d/1_2cHoazI1LB68rk5k40v-GGUEUKqY-t0/view">Here</a> you go!`);
+                return await bot.beginDialog('main_thread_repeat');
             }
         },
         {

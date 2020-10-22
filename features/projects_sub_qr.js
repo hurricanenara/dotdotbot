@@ -23,8 +23,8 @@ module.exports = function(controller) {
         await bot.say(`You said ${results.choice}`);
         if (results.choice !== 'back') {
             await bot.beginDialog(results.choice)
-        } else {
-            await bot.beginDialog('main_thread_qr_repeat')
+        } else if (results.choice === 'back') {
+            await bot.beginDialog('main_thread_repeat')
         }
     });
 
@@ -40,7 +40,7 @@ module.exports = function(controller) {
 
     startTyping(quiche, 'second', 1500)
 
-    quiche.addMessage(`You can check it out at <https://quichelite.herokuapp.com/#/>`, 'second');
+    quiche.addMessage(`You can check it out <a href=https://quichelite.herokuapp.com/#/>here</a>`, 'second');
 
     quiche.after(async(results, bot) => {
         await bot.say({type: 'typing'}, 'quiche');
@@ -59,7 +59,7 @@ module.exports = function(controller) {
 
     startTyping(oil, 'second', 1500)
 
-    oil.addMessage(`You can check it out at <https://hurricanenara.github.io/oil/>`, 'second');
+    oil.addMessage(`Check it out through this <a href=https://hurricanenara.github.io/oil/>link</a>`, 'second');
 
     oil.after(async(results, bot) => {
         await bot.say({type: 'typing'}, 'oil');

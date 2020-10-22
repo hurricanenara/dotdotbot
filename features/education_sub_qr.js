@@ -60,7 +60,7 @@ module.exports = function(controller) {
         if (results.choice !== 'back') {
             await bot.beginDialog(results.choice)
         } else {
-            await bot.beginDialog('main_thread_qr_repeat')
+            await bot.beginDialog('main_thread_repeat')
         }
     });
 
