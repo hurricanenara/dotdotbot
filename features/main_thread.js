@@ -13,7 +13,6 @@ module.exports = function(controller) {
         {
             pattern: new RegExp(/(help?|hint|hmm|idk)/),
             handler: async function(res, convo, bot) {
-                console.log(convo);
                 await bot.say(`You said help`);
                 return await bot.beginDialog('main_thread_qr');
             }
@@ -21,7 +20,6 @@ module.exports = function(controller) {
         {
             pattern: new RegExp(/(work|history|experiences?)/),
             handler: async function(res, convo, bot) {
-                console.log(convo);
                 await bot.say(`You want to know about my work history`);
                 return await bot.beginDialog('experience');
             }
@@ -29,7 +27,6 @@ module.exports = function(controller) {
         {
             pattern: new RegExp(/(educationa?l?|academics|majors?|background)/),
             handler: async function(res, convo, bot) {
-                console.log(convo);
                 await bot.say(`You want to learn about my academic background`);
                 return await bot.beginDialog('education');
             }
@@ -37,7 +34,6 @@ module.exports = function(controller) {
         {
             pattern: new RegExp(/(languages?|tech|stack)/),
             handler: async function(res, convo, bot) {
-                console.log(convo);
                 await bot.say(`You want to learn about my tech stack`);
                 return await bot.beginDialog('techStack');
             }
@@ -45,7 +41,6 @@ module.exports = function(controller) {
         {
             pattern: new RegExp(/(tell|yourself|who)/),
             handler: async function(res, convo, bot) {
-                console.log(convo);
                 await bot.say(`Gotcha.`);
                 return await bot.beginDialog('about');
             }
@@ -53,7 +48,6 @@ module.exports = function(controller) {
         {
             pattern: new RegExp(/(contact|email|(git)?(hub)?|linkedin)/),
             handler: async function(res, convo, bot) {
-                console.log(convo);
                 await bot.say(`One moment...`);
                 return await bot.beginDialog('contact');
             }

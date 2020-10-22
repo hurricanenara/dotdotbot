@@ -21,7 +21,6 @@ module.exports = function(controller) {
 
     aboutSubQR.after(async(results, bot) => {
         await bot.say(`You said ${results.choice}`);
-        console.log(results);
         if (results.choice !== 'back') {
             await bot.beginDialog(results.choice)
         } else {

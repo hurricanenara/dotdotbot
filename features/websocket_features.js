@@ -10,8 +10,6 @@ module.exports = function(controller) {
 
     if (controller.adapter.name === 'Web Adapter') {
 
-        console.log('Loading sample web features...');
-
         controller.on('hello', async(bot, message) => {
             await bot.reply(message, `Welcome to my channel! My name is ${name}. Greet me! `)
         });

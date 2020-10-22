@@ -13,7 +13,6 @@ module.exports = function(controller) {
         {
             pattern: 'help',
             handler: async function(res, convo, bot) {
-                console.log(convo);
                 await bot.say(`You said help`);
                 return await bot.beginDialog('main_thread_qr');
             }
@@ -21,7 +20,6 @@ module.exports = function(controller) {
         {
             pattern: 'work history',
             handler: async function(res, convo, bot) {
-                console.log(convo);
                 await bot.say(`You said work history`);
                 return await bot.beginDialog('experience');
             }
@@ -29,7 +27,6 @@ module.exports = function(controller) {
         {
             pattern: 'school' || 'education' || 'major',
             handler: async function(res, convo, bot) {
-                console.log(convo);
                 await bot.say(`You want to learn about my academic background`);
                 return await bot.beginDialog('education');
             }

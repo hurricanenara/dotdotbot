@@ -133,7 +133,6 @@ var Botkit = {
 
             user.timezone_offset = new Date().getTimezoneOffset();
             that.current_user = user;
-            console.log('CONNECT WITH USER', user);
         }
 
         // connect to the chat server!
@@ -187,7 +186,6 @@ var Botkit = {
 
         // Connection opened
         that.socket.addEventListener('open', function (event) {
-            console.log('CONNECTED TO SOCKET');
             that.reconnect_count = 0;
             that.trigger('connected', event);
             that.deliverMessage({
@@ -199,15 +197,12 @@ var Botkit = {
         });
 
         that.socket.addEventListener('error', function (event) {
-            console.error('ERROR', event);
         });
 
         that.socket.addEventListener('close', function (event) {
-            console.log('SOCKET CLOSED!');
             that.trigger('disconnected', event);
             if (that.reconnect_count < that.config.max_reconnect) {
                 setTimeout(function () {
-                    console.log('RECONNECTING ATTEMPT ', ++that.reconnect_count);
                     that.connectWebsocket(that.config.ws_url);
                 }, that.config.reconnect_timeout);
             } else {
@@ -283,12 +278,10 @@ var Botkit = {
         switch (event.data.name) {
             case 'trigger':
                 // tell Botkit to trigger a specific script/thread
-                console.log('TRIGGER', event.data.script, event.data.thread);
                 Botkit.triggerScript(event.data.script, event.data.thread);
                 break;
             case 'identify':
                 // link this account info to this user
-                console.log('IDENTIFY', event.data.user);
                 Botkit.identifyUser(event.data.user);
                 break;
             case 'connect':
@@ -296,7 +289,6 @@ var Botkit = {
                 Botkit.connect(event.data.user);
                 break;
             default:
-                console.log('UNKNOWN COMMAND', event.data);
         }
     },
     sendEvent: function (event) {
@@ -338,7 +330,6 @@ var Botkit = {
     },
     boot: function (user) {
 
-        console.log('Booting up');
 
         var that = this;
 
@@ -372,12 +363,10 @@ var Botkit = {
         that.on('webhook_error', function (err) {
 
             alert('Error sending message!');
-            console.error('Webhook Error', err);
 
         });
 
         that.on('typing', function () {
-            console.log('typing...')
             that.clearReplies();
             that.renderMessage({
                 isTyping: true
@@ -386,7 +375,6 @@ var Botkit = {
 
         that.on('sent', function () {
             // do something after sending
-            // console.log('typing...')
             // that.clearReplies();
             // that.renderMessage({
             //     isTyping: true
@@ -395,7 +383,6 @@ var Botkit = {
 
         that.on('message', function (message) {
 
-            console.log('RECEIVED MESSAGE', message);
             that.renderMessage(message);
 
         });
@@ -475,11 +462,9 @@ var Botkit = {
                 type: 'event',
                 name: 'booted'
             });
-            console.log('Messenger booted in embedded mode');
 
         } else {
 
-            console.log('Messenger booted in stand-alone mode');
             // this is a stand-alone client. connect immediately.
             that.connect(user);
         }

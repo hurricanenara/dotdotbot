@@ -19,7 +19,6 @@ module.exports = function(controller) {
 
     mainThreadQR.after(async(results, bot) => {
         await bot.say(`You said ${results.choice}`);
-        console.log(results);
         await bot.beginDialog(results.choice)
     });
 }

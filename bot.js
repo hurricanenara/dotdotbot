@@ -52,23 +52,6 @@ if (process.env.CMS_URI) {
 
 // Once the bot has booted up its internal services, you can use them to do stuff.
 controller.ready(() => {
-
-    // controller.middleware.receive.use((bot, message, next) => {
-    //     console.log("IN > ", message.text);
-    //     bot.reply(message, { type: "typing" });
-    //     setTimeout(async () => {
-    //     next();
-    //     }, 1000);
-    // });
-
-    
-
-    // const typingMiddleware = botkitTypingMiddleware({
-    //     maximumTypingDelayMs: 3000,
-    // });
-    // controller.middleware.send.use(typingMiddleware);
-
-    // load traditional developer-created local custom feature modules
     controller.loadModules(__dirname + '/features');
 
     /* catch-all that uses the CMS to trigger dialogs */

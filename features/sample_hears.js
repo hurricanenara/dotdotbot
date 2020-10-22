@@ -38,7 +38,6 @@ module.exports = function(controller) {
     
     controller.hears(['hello', 'hi', 'yo'], ['message'], async (bot, message) => {
         const greetings = masterArray[0]['script'][0]['script'][0]['text'];
-        console.log(greetings);
         const rand = Math.floor(Math.random() * greetings.length)
         await bot.reply(message, greetings[rand]);
         await bot.beginDialog('main_thread');
