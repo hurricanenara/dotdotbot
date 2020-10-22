@@ -65,7 +65,7 @@ dotdotbot was created using botkit.js and is hosted on heroku.
 Unfortunately, due to 'dotdotbot' being taken as a heroku domain, users can meet and chat with dotdotbot here: [Narasbot](https://narasbot.herokuapp.com/)
 
 ### Typing Indicator Middleware
-To mitigate from falling into reduntant usage of the typing indicator added as a message and reply, a `use` middleware was attached to filter all user triggered repsonses from the bot to take a puse, then start typing before executing a response.
+To mitigate from falling into reduntant usage of the typing indicator added as a message and reply, a `use` middleware was attached to filter all user triggered repsonses from the bot to take a pause, then start typing before executing a response.
 ```javascript
     controller.middleware.receive.use((bot, message, next) => {
         bot.reply(message, { type: "typing" });
