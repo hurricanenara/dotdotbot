@@ -28,6 +28,7 @@ contact.addQuestion('You can end this chat by saying end or say continue to go b
 
 ### Instruction
 Once a user enters the creator's chat channel, dotdotbot will greet the user. The user can greet dotdotbot back to trigger the bot to standby for commands and questions.
+--
 ![Chat Demo](public/assets/narasbotDemo.gif)
 
 ### Commands
