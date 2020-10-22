@@ -95,6 +95,12 @@ var Botkit = {
         } else {
             this.webhook(message);
         }
+        // if (message.type !== 'typing') {
+        //     let audio = document.createElement('audio');
+        //     audio.src = ''
+        //     new Audio({url: "features/thread_bank/ping.mp3"}).play();
+        // }
+        // message.type !== 'typing' ? that.playSound('features/thread_bank/ping.mp3')
     },
     getHistory: function (guid) {
         var that = this;
@@ -475,8 +481,8 @@ var Botkit = {
 
 window.onload = function(){
     document.getElementById('close').onclick = function(){
-        this.parentNode.parentNode.parentNode
-        .removeChild(this.parentNode.parentNode);
+        this.parentNode.parentNode
+        .removeChild(this.parentNode);
         return false;
     };
 };

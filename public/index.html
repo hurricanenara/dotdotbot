@@ -50,7 +50,7 @@
             <section>
                 <div id="message_list">
                     <div id="message_template">
-                        <div class="message {{message.type}}">
+                        <div class="message {{message.type}}" id="sound" onchange="playSound('ping');">
                             {{#if message.isTyping}}
                               <div class="typing-indicator">
                                 <span></span>
@@ -86,6 +86,11 @@
             </footer>
         </div>
         </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+          integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ=="
+          crossorigin="anonymous"></script>
         <script src="/client.js"></script>
+        
     </body>
 </html>
+
