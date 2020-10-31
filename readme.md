@@ -1,5 +1,7 @@
 # dotdotbot
 
+[Live Site](http://narasbot.herokuapp.com/)
+
 ### Introduction
 dotdotbot is an AI (Almost Intelligent) chatbot that can answer easy to less easy questions about her creator, Nara.
 dotdotbot was named after the three typing indicator dots or the ellipsis (...) to denote "thinking" to simulate human-like interactions (psychologically).
