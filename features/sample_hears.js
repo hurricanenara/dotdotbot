@@ -49,4 +49,18 @@ module.exports = function(controller) {
     controller.hears(new RegExp(/(^are you open to work\?$)/),'message', async (bot, message) => {
         await bot.reply(message, `Yes! I'm looking to join a team of ambitious individuals where I can contribute and learn.`);
     });
+    
+    controller.hears(new RegExp(/(name\?$)/),'message', async (bot, message) => {
+        await bot.reply(message, `My name is Nara.`);
+        await bot.beginDialog('main_thread');
+    });
+    
+    controller.hears(new RegExp(/(speak\?+$)/),'message', async (bot, message) => {
+        await bot.reply(message, `I'm fluent in Korean and English.`);
+        await bot.beginDialog('main_thread');
+    });
+    controller.hears(new RegExp(/(from\?+$)/),'message', async (bot, message) => {
+        await bot.reply(message, `I grew up in Korea, England and the US.`);
+        await bot.beginDialog('main_thread');
+    });
 }

@@ -130,6 +130,27 @@ module.exports = function(controller) {
             }
         },
         {
+            pattern: new RegExp(/(name\?$)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`My name is Nara.`);
+                return await bot.beginDialog('main_thread_repeat');
+            }
+        },
+        {
+            pattern: new RegExp(/(speak\?+$)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`I'm fluent in Korean and English.`);
+                return await bot.beginDialog('main_thread_repeat');
+            }
+        },
+        {
+            pattern: new RegExp(/(from\?+$)/),
+            handler: async function(res, convo, bot) {
+                await bot.say(`I grew up in Korea, England and the US.`);
+                return await bot.beginDialog('main_thread_repeat');
+            }
+        },        
+        {
             default: true,
             handler: async (res, convo, bot) => {
                 await bot.say(`Sorry, I don't understand`);

@@ -11,7 +11,7 @@ module.exports = function(controller) {
     if (controller.adapter.name === 'Web Adapter') {
 
         controller.on('hello', async(bot, message) => {
-            await bot.reply(message, `Welcome to my channel! My name is ${name}. Greet me! `)
+            await bot.reply(message, `Welcome to my channel! My name is ${name}.`)
         });
 
         controller.on('welcome_back', async(bot, message) => {
